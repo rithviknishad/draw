@@ -20,6 +20,7 @@ import { useAtom } from "jotai/react";
 import { ulid } from "ulidx";
 import { toast } from "sonner";
 import { isAppleDevice, sleep, timeAgo } from "@/lib/utils";
+import Loading from "@/components/Loading";
 const ExcalidrawPage = lazy(() => import("@/components/ExcalidrawPage"));
 
 function App() {
@@ -174,7 +175,7 @@ function App() {
       <main className="relative h-screen">
         <div className="h-full w-full">
           {current && (
-            <Suspense fallback={"loading"}>
+            <Suspense fallback={<Loading />}>
               <ExcalidrawPage slug={current.slug} />
             </Suspense>
           )}

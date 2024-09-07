@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { getMany, setMany } from "idb-keyval";
 import { BinaryFiles } from "@excalidraw/excalidraw/types/types";
 import { debounce, sleep } from "@/lib/utils";
+import Loading from "@/components/Loading";
 
 type PageOnLocalStorage = {
   elements: readonly ExcalidrawElement[];
@@ -59,7 +60,7 @@ export default function ExcalidrawPage(props: Props) {
   }, [props.slug]);
 
   if (page === undefined) {
-    return "loading...";
+    return <Loading />;
   }
 
   return (
