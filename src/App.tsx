@@ -98,6 +98,18 @@ function App() {
     };
   };
 
+  React.useEffect(() => {
+    const previousTitle = document.title;
+
+    document.title = current?.title
+      ? `${current.title} | draw.rithviknishad.dev`
+      : "draw.rithviknishad.dev";
+
+    return () => {
+      document.title = previousTitle;
+    };
+  }, [current?.title]);
+
   return (
     <>
       <CommandDialog open={cmdOpen} onOpenChange={setCmdOpen}>
